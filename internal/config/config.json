@@ -1,0 +1,22 @@
+{
+  "config/": "config.json",
+  "internal/": {
+    "infra/": {
+      "db/": "db.go",
+      "redis/": "redis.go",
+      "kafka/": "kafka.go",
+      "rabbit/": "rabbit.go",
+      "metrics/": "metrics.go"
+    },
+    "model/": "model.go",
+    "handler/": "handler.go",
+    "service/": "service.go",
+    "repo/": "repository.go"
+  },
+  "pkg/": {},
+  "tests": "tests.go",
+  "docs": "docs.go",
+  "main.go": {},
+  "config.json": {},
+  "Dockerfile": {}
+}
