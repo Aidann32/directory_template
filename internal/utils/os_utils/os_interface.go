@@ -1,9 +1,6 @@
 package os_utils
 
 type OSUtils interface {
-	InitGoMod(moduleName string) (err error)
-	ValidateFileName(name string) (result bool)
+	ValidateFileName(name string) (err error)
 	ValidateDirectoryName(name string) (err error)
-	DoesFileExist() (result bool)
-	IsGoInstalled() (err error)
 }
