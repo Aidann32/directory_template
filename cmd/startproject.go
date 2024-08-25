@@ -24,6 +24,7 @@ var startProjectCmd = &cobra.Command{
 
 		if len(args) < 3 {
 			fmt.Println("You must specify arguments")
+			return
 		}
 
 		layoutPath, _ := cmd.Flags().GetString("l")
@@ -33,6 +34,7 @@ var startProjectCmd = &cobra.Command{
 
 		if err := service.StartProject(args[0], args[1], args[2], layoutPath, utils); err != nil {
 			fmt.Println(err.Error())
+			return
 		}
 		fmt.Println("Directory successfully created!")
 	},
