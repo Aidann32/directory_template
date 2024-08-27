@@ -36,7 +36,7 @@ var startProjectCmd = &cobra.Command{
 			_ = json.Unmarshal(static.DefaultLayout, &projectLayout)
 		} else {
 			if err := projectUtils.ParseProjectLayout(layoutPath, &projectLayout); err != nil {
-				fmt.Println("error while reading project layout: %s", err.Error())
+				fmt.Printf("Error while reading project layout: %s", err.Error())
 			}
 		}
 
