@@ -39,7 +39,11 @@ func createLayout(layout map[string]interface{}, projectRoot string) error {
 	return nil
 }
 
-func StartProject(rootDirectory, projectName, goModuleName, layoutPath string, osUtils os_utils.OSUtils) error {
+func writeToFile() error {
+	return nil
+}
+
+func StartProject(rootDirectory, projectName, goModuleName string, layout map[string]interface{}, osUtils os_utils.OSUtils) error {
 	if err := utils.IsGoInstalled(); err != nil {
 		return err
 	}
@@ -59,11 +63,6 @@ func StartProject(rootDirectory, projectName, goModuleName, layoutPath string, o
 		return fmt.Errorf("invalid go module name: %s", err.Error())
 	}
 
-	var projectLayout map[string]interface{}
-	if err := utils.ParseProjectLayout(layoutPath, &projectLayout); err != nil {
-		return fmt.Errorf("error while reading project layout: %s", err.Error())
-	}
-
 	projectDirectory := filepath.Join(rootDirectory, projectName)
 	if err := os.Mkdir(projectDirectory, 0777); err != nil {
 		return fmt.Errorf("error while creating project root directory: %s", err.Error())
@@ -77,7 +76,7 @@ func StartProject(rootDirectory, projectName, goModuleName, layoutPath string, o
 		return fmt.Errorf("error while creating go module: %s", err.Error())
 	}
 
-	if err := createLayout(projectLayout, projectDirectory); err != nil {
+	if err := createLayout(layout, projectDirectory); err != nil {
 		return fmt.Errorf("error while creating project layout: %s", err.Error())
 	}
 
