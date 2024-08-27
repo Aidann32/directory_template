@@ -14,8 +14,8 @@
     "repo/": "repository.go"
   },
   "pkg/": "",
-  "tests": "tests.go",
-  "docs": "docs.go",
+  "tests/": "tests.go",
+  "docs/": "docs.go",
   "main.go": "",
   "config.json": "",
   "Dockerfile": ""
