@@ -16,11 +16,8 @@ var rootCmd = &cobra.Command{
 	Long:  ``,
 }
 
-var DefaultLayout []byte
-
-func Execute(defaultLayout []byte) {
+func Execute() {
 	err := rootCmd.Execute()
-	DefaultLayout = defaultLayout
 	if err != nil {
 		os.Exit(1)
 	}

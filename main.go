@@ -6,11 +6,13 @@ package main
 import (
 	_ "embed"
 	"github.com/Aidann32/directory_template/cmd"
+	"github.com/Aidann32/directory_template/internal/static"
 )
 
 //go:embed project_layout.json
 var projectLayout []byte
 
 func main() {
-	cmd.Execute(projectLayout)
+	static.DefaultLayout = projectLayout
+	cmd.Execute()
 }

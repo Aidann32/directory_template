@@ -3,6 +3,7 @@ package cmd
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/Aidann32/directory_template/internal/static"
 	"github.com/Aidann32/directory_template/internal/utils/os_utils"
 	"github.com/spf13/cobra"
 	"runtime"
@@ -32,7 +33,7 @@ var startProjectCmd = &cobra.Command{
 		var projectLayout map[string]interface{}
 		layoutPath, _ := cmd.Flags().GetString("l")
 		if layoutPath == "" {
-			_ = json.Unmarshal(DefaultLayout, &projectLayout)
+			_ = json.Unmarshal(static.DefaultLayout, &projectLayout)
 		} else {
 			if err := projectUtils.ParseProjectLayout(layoutPath, &projectLayout); err != nil {
 				fmt.Println("error while reading project layout: %s", err.Error())
