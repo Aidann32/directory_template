@@ -7,6 +7,7 @@ import (
 	"github.com/Aidann32/directory_template/internal/utils/os_utils"
 	"github.com/spf13/cobra"
 	"runtime"
+	"strings"
 
 	"github.com/Aidann32/directory_template/internal/service"
 	projectUtils "github.com/Aidann32/directory_template/internal/utils"
@@ -32,7 +33,7 @@ var startProjectCmd = &cobra.Command{
 
 		var projectLayout map[string]interface{}
 		layoutPath, _ := cmd.Flags().GetString("l")
-		if layoutPath == "" {
+		if len(strings.TrimSpace(layoutPath)) == 0 {
 			_ = json.Unmarshal(static.DefaultLayout, &projectLayout)
 		} else {
 			if err := projectUtils.ParseProjectLayout(layoutPath, &projectLayout); err != nil {

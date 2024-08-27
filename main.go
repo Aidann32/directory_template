@@ -9,7 +9,9 @@ import (
 	"github.com/Aidann32/directory_template/internal/static"
 )
 
-//go:embed project_layout.json
+// TODO: Write to file  basic configuration if default layout is used
+
+//go:embed assets/layouts/project_layout.json
 var projectLayout []byte
 
 func main() {
