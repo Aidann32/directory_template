@@ -10,6 +10,7 @@ import (
 )
 
 // TODO: Write to file  basic configuration if default layout is used
+// TODO: Parse layout when array used
 
 //go:embed assets/layouts/project_layout.json
 var projectLayout []byte
