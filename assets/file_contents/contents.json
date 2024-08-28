@@ -1,0 +1,17 @@
+{
+  "config.go": "",
+  "db.go": "",
+  "redis.go": "",
+  "kafka.go": "",
+  "rabbit.go": "",
+  "metrics.go": "",
+  "model.go": "",
+  "handler.go": "",
+  "service.go": "",
+  "repo.go": "",
+  "tests.go": "",
+  "docs.go": "",
+  "main.go": "",
+  "config.json": "",
+  "Dockerfile": ""
+}

@@ -39,7 +39,7 @@ func createLayout(layout map[string]interface{}, projectRoot string) error {
 	return nil
 }
 
-func writeToFile() error {
+func writeToFile(file *os.File, content string) error {
 	return nil
 }
 

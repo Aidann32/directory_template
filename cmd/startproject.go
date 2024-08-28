@@ -15,8 +15,8 @@ import (
 
 var startProjectCmd = &cobra.Command{
 	Use:   "startproject [root_directory] [project_name] [module_name]",
-	Short: "Starts project with specified layout",
-	Long:  "If you do not pass your directory template, the standard one will be used",
+	Short: "Starts project with specified layout.",
+	Long:  "If you do not pass your directory template, the standard one will be used.",
 	Run: func(cmd *cobra.Command, args []string) {
 		var utils os_utils.OSUtils
 		switch runtime.GOOS {
@@ -51,5 +51,5 @@ var startProjectCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(startProjectCmd)
-	startProjectCmd.Flags().String("l", "", "Custom project layout")
+	startProjectCmd.Flags().StringP("layout", "l", "", "Custom project layout")
 }

@@ -14,7 +14,11 @@ import (
 //go:embed assets/layouts/project_layout.json
 var projectLayout []byte
 
+//go:embed assets/file_contents/contents.json
+var fileContents []byte
+
 func main() {
 	static.DefaultLayout = projectLayout
+	static.FileContents = fileContents
 	cmd.Execute()
 }
