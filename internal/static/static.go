@@ -1,4 +1,4 @@
 package static
 
 var DefaultLayout []byte
-var FileContents []byte
+var FileContents map[string]string

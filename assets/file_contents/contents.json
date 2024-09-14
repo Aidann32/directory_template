@@ -11,7 +11,7 @@
   "repo.go": "package repo",
   "tests.go": "package tests",
   "docs.go": "package docs",
-  "main.go": "package main\n\nfunc main{\n}",
+  "main.go": "package main\n\nfunc main{\n\n}",
   "config.json": "",
   "Dockerfile": ""
 }

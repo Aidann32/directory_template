@@ -5,12 +5,15 @@ package main
 
 import (
 	_ "embed"
+	"encoding/json"
 	"github.com/Aidann32/directory_template/cmd"
 	"github.com/Aidann32/directory_template/internal/static"
 )
 
-// TODO: Write to file  basic configuration if default layout is used
 // TODO: Parse layout when array used
+
+/* TODO: New command "config" example: "config add key value --pd(project directory- project root directory where
+config.json file is located) */
 
 //go:embed assets/layouts/project_layout.json
 var projectLayout []byte
@@ -20,6 +23,6 @@ var fileContents []byte
 
 func main() {
 	static.DefaultLayout = projectLayout
-	static.FileContents = fileContents
+	_ = json.Unmarshal(fileContents, &static.FileContents)
 	cmd.Execute()
 }

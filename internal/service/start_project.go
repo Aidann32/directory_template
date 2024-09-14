@@ -2,6 +2,7 @@ package service
 
 import (
 	"fmt"
+	"github.com/Aidann32/directory_template/internal/static"
 	"github.com/Aidann32/directory_template/internal/utils"
 	"github.com/Aidann32/directory_template/internal/utils/os_utils"
 	"os"
@@ -14,7 +15,7 @@ func createLayout(layout map[string]interface{}, projectRoot string) error {
 		_ = os.Chdir(projectRoot)
 		if strings.HasSuffix(key, "/") {
 			if err := os.Mkdir(key, 0777); err != nil {
-				return fmt.Errorf("error while creating layout: %s", err.Error())
+				return fmt.Errorf("error while creating layout folder: %s", err.Error())
 			}
 			_ = os.Chdir(key)
 			switch value.(type) {
@@ -25,14 +26,30 @@ func createLayout(layout map[string]interface{}, projectRoot string) error {
 				}
 			case string:
 				if value.(string) != "" {
-					if _, err := os.Create(value.(string)); err != nil {
+					file, err := os.Create(value.(string))
+					if err != nil {
 						return err
+					}
+					if utils.Contains(value.(string), utils.GetKeys(&static.FileContents)) {
+						err = writeToFile(file, static.FileContents[value.(string)])
+						if err != nil {
+							return err
+						}
 					}
 				}
 			}
 		} else {
-			if _, err := os.Create(key); err != nil {
-				return err
+			if key != "" {
+				file, err := os.Create(key)
+				if err != nil {
+					return err
+				}
+				if utils.Contains(value.(string), utils.GetKeys(&static.FileContents)) {
+					err = writeToFile(file, static.FileContents[key])
+					if err != nil {
+						return err
+					}
+				}
 			}
 		}
 	}
@@ -40,7 +57,11 @@ func createLayout(layout map[string]interface{}, projectRoot string) error {
 }
 
 func writeToFile(file *os.File, content string) error {
-	return nil
+	if _, err := file.WriteString(content); err != nil {
+		file.Close()
+		return err
+	}
+	return file.Close()
 }
 
 func StartProject(rootDirectory, projectName, goModuleName string, layout map[string]interface{}, osUtils os_utils.OSUtils) error {

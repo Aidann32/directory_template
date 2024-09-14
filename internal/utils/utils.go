@@ -102,3 +102,20 @@ func ValidateModuleName(moduleName string) error {
 
 	return nil
 }
+
+func GetKeys(hashTable *map[string]string) []string {
+	result := make([]string, len(*hashTable))
+	for key, _ := range *hashTable {
+		result = append(result, key)
+	}
+	return result
+}
+
+func Contains(element string, slice []string) bool {
+	for _, value := range slice {
+		if element == value {
+			return true
+		}
+	}
+	return false
+}
