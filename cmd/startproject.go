@@ -7,6 +7,7 @@ import (
 	"github.com/Aidann32/directory_template/internal/utils/os_utils"
 	"github.com/spf13/cobra"
 	"runtime"
+	"strings"
 
 	"github.com/Aidann32/directory_template/internal/service"
 	projectUtils "github.com/Aidann32/directory_template/internal/utils"
@@ -14,8 +15,8 @@ import (
 
 var startProjectCmd = &cobra.Command{
 	Use:   "startproject [root_directory] [project_name] [module_name]",
-	Short: "Starts project with specified layout",
-	Long:  "If you do not pass your directory template, the standard one will be used",
+	Short: "Starts project with specified layout.",
+	Long:  "If you do not pass your directory template, the standard one will be used.",
 	Run: func(cmd *cobra.Command, args []string) {
 		var utils os_utils.OSUtils
 		switch runtime.GOOS {
@@ -32,7 +33,7 @@ var startProjectCmd = &cobra.Command{
 
 		var projectLayout map[string]interface{}
 		layoutPath, _ := cmd.Flags().GetString("l")
-		if layoutPath == "" {
+		if len(strings.TrimSpace(layoutPath)) == 0 {
 			_ = json.Unmarshal(static.DefaultLayout, &projectLayout)
 		} else {
 			if err := projectUtils.ParseProjectLayout(layoutPath, &projectLayout); err != nil {
@@ -50,5 +51,5 @@ var startProjectCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(startProjectCmd)
-	startProjectCmd.Flags().String("l", "", "Custom project layout")
+	startProjectCmd.Flags().StringP("layout", "l", "", "Custom project layout")
 }

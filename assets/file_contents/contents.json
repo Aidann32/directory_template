@@ -1,0 +1,17 @@
+{
+  "config.go": "package config",
+  "db.go": "package db",
+  "redis.go": "package redis",
+  "kafka.go": "package kafka",
+  "rabbit.go": "package rabbit",
+  "metrics.go": "package metrics",
+  "model.go": "package models",
+  "handler.go": "package handler",
+  "service.go": "package service",
+  "repo.go": "package repo",
+  "tests.go": "package tests",
+  "docs.go": "package docs",
+  "main.go": "package main\n\nfunc main{\n\n}",
+  "config.json": "",
+  "Dockerfile": ""
+}
