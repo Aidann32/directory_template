@@ -10,7 +10,7 @@ import (
 	"github.com/Aidann32/directory_template/internal/static"
 )
 
-// TODO: Parse layout when array used
+// TODO: Parse layout when array used as a value(multiple files)
 
 /* TODO: New command "config" example: "config add key value --pd(project directory- project root directory where
 config.json file is located) */
